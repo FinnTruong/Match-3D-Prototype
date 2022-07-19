@@ -7,6 +7,8 @@ public class MatchingObject : MonoBehaviour
     private Rigidbody rigidbody;
     private Vector3 oldMousePos;
 
+    [Space]
+    [Header("Movement Variables")]
     public float moveSpeed = 200f;
     public float force = 1.5f;
     public float rotateForce = 1f;
@@ -17,6 +19,7 @@ public class MatchingObject : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
+    #region MOVEMENT LOGIC
     void OnMouseDown()
     {
         rigidbody.isKinematic = true;
@@ -41,10 +44,11 @@ public class MatchingObject : MonoBehaviour
         var throwDir = new Vector3(delta.x, 0, delta.y);
         var rotateDir = new Vector3(delta.y, 0, -delta.x);
         rigidbody.AddForce(throwDir * force, ForceMode.Impulse);
-        rigidbody.AddTorque(rotateDir * rotateForce, ForceMode.Impulse);
+        rigidbody.AddTorque(rotateDir * rotateForce);
         //var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //var dir = mousePos - transform.position;
         //dir.Normalize();
         //rigidbody.velocity = dir * speed;
     }
+    #endregion
 }
