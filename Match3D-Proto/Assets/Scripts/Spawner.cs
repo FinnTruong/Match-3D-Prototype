@@ -29,17 +29,19 @@ public class Spawner : MonoBehaviour
     public void SpawnObjects()
     {
         Init();
-        for (int j = 0; j < pairCount; j++)
+
+        for (int i = 0; i < objectPrefabs.Length; i++)
         {
-            for (int i = 0; i < objectPrefabs.Length; i++)
+            for (int j = 0; j < Random.Range(1, pairCount + 1); j++) 
             {
                 var matchingObject_01 = Instantiate(objectPrefabs[i], GetRandomPos(), Quaternion.identity, objectHolder);
                 var matchingObject_02 = Instantiate(objectPrefabs[i], GetRandomPos(), Quaternion.identity, objectHolder);
                 activeObjects.Add(matchingObject_01);
                 activeObjects.Add(matchingObject_02);
-            }
+            }           
         }
-       
+
+
     }
 
     private Vector3 GetRandomPos()
