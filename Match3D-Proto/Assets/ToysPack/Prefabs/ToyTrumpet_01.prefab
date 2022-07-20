@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 65732188456061844}
   - component: {fileID: -8340364451362603688}
   - component: {fileID: 6333902221076683984}
-  - component: {fileID: -3365850995210849783}
   m_Layer: 8
   m_Name: ToyTrumpet_01
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 838328959124623662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 922184038966734622}
   - {fileID: 6011952998397320649}
@@ -54,7 +53,7 @@ MonoBehaviour:
   force: 1.5
   rotateForce: 5
   expelForce: 35
-  height: 30
+  height: 26
   isInRange: 0
   isChecking: 0
 --- !u!54 &6333902221076683984
@@ -73,20 +72,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-3365850995210849783
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838328959124623662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &2070482966675850097
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +326,7 @@ GameObject:
   - component: {fileID: 922184038966734622}
   - component: {fileID: 3058288871872025684}
   - component: {fileID: 6481136244383844677}
+  - component: {fileID: 1454283579769725333}
   m_Layer: 8
   m_Name: ToyTrumpet_01
   m_TagString: Untagged
@@ -411,3 +397,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1454283579769725333
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075955971164754334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -983162390287043715, guid: 1dd802372639a924f9eb1082131b0bad, type: 3}

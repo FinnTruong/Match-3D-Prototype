@@ -13,10 +13,11 @@ public class MatchingManager : MonoBehaviour
 {
     public static MatchingManager Instance;
     public MatchingState state = MatchingState.Empty;
-
+    public Animator anim;
     public Spawner spawner;
     public Transform leftPos, rightPos, centerPos;
     public MatchingObject leftObject, rightObject;
+    public ParticleSystem matchVFX;
 
     public float distanceThreshold = 2f;
     public float animationDuration = 0.2f;
@@ -80,18 +81,18 @@ public class MatchingManager : MonoBehaviour
             matchingObject_02.transform.localScale = Vector3.Lerp(object02StartScale, object02StartScale + Vector3.one * 1.5f, percent);
             yield return null;
         }
-        yield return new WaitForSecondsRealtime(0.2f);
-
+        anim.SetTrigger("Open");
+        matchVFX.Play();
         percent = 0f;
         object01StartScale = matchingObject_01.transform.localScale;
         object02StartScale = matchingObject_02.transform.localScale;
+
         while(percent<1f)
         {
-            percent += Time.deltaTime / 0.1f;
+            percent += Time.deltaTime / 0.15f;
             matchingObject_01.transform.localScale = Vector3.Lerp(object01StartScale, Vector3.zero, percent);
             matchingObject_02.transform.localScale = Vector3.Lerp(object02StartScale, Vector3.zero, percent);
             yield return null;
-
         }
         matchingObject_01.gameObject.SetActive(false);
         matchingObject_02.gameObject.SetActive(false);

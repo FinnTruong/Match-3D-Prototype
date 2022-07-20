@@ -56,32 +56,37 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_FPSDisplay.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\TemporalReprojection.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\VelocityBuffer.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\VelocityBufferTag.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_RainActivator.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_SubShowcase.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_AssetManager.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_BallPlayer.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\InputSystemSwitcher.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\MatchingObject.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\TemporalReprojection.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_MeshExtrusion.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\EffectBase.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_AssetManager.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\FrustumJitter.cs" />
     <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_RotatorDisplay.cs" />
+    <Compile Include="Assets\Scripts\MatchingManager.cs" />
     <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\Extensions.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\VelocityBuffer.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\InputSystemSwitcher.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\FrustumJitter.cs" />
     <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_SetInteractiveShaderEffectsTriplanar.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_FPSDisplay.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_SubShowcase.cs" />
     <Compile Include="Assets\BruteForce-GrassShader\Extra\Bloom\Bloom.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_SetInteractiveShaderEffects.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_Terrain.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_BallPlayer.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_BallPlayerTriplanar.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\VelocityBufferTag.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_FxOnMouseClick.cs" />
-    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_RainActivator.cs" />
-    <Compile Include="Assets\Scripts\GeometryGrass\GeometryGrassPainter.cs" />
     <Compile Include="Assets\Scripts\GeometryGrass\ShaderInteractor.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_BallPlayerTriplanar.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_FxOnMouseClick.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_MeshExtrusion.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_Terrain.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Extra\AA\Scripts\EffectBase.cs" />
+    <Compile Include="Assets\Scripts\GeometryGrass\GeometryGrassPainter.cs" />
+    <Compile Include="Assets\BruteForce-GrassShader\Scripts\BF_SetInteractiveShaderEffects.cs" />
+    <Compile Include="Assets\EpicLootBoxEffects\Scripts\ToggleName.cs" />
+    <Compile Include="Assets\EpicLootBoxEffects\Scripts\CameraShake.cs" />
+    <Compile Include="Assets\EpicLootBoxEffects\Scripts\LootBoxController.cs" />
+    <Compile Include="Assets\EpicLootBoxEffects\Scripts\ManualScripts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shader\GeometryGrassShader.shader" />

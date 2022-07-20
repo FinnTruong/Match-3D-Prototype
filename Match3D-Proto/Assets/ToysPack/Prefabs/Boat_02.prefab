@@ -101,7 +101,7 @@ MonoBehaviour:
   force: 1.5
   rotateForce: 5
   expelForce: 35
-  height: 30
+  height: 26
   isInRange: 0
   isChecking: 0
 --- !u!54 &-1919095161968254385

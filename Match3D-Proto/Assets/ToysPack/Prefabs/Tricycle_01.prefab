@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 548178461049645754}
   m_LocalRotation: {x: 0.000000021855694, y: -0.00000004371139, z: 9.055528e-16, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1093096949381978732}
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   force: 1.5
   rotateForce: 5
   expelForce: 35
-  height: 30
+  height: 26
   isInRange: 0
   isChecking: 0
 --- !u!54 &8033412128865001963

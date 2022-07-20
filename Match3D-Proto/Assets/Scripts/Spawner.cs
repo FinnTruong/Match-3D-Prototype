@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public float minX, maxX, minY, maxY, minZ, maxZ;
     private Transform objectHolder;
     public List<MatchingObject> activeObjects = new List<MatchingObject>();
+    private List<int> selectedIndex = new List<int>();
 
 
     private void Start()
@@ -21,7 +22,7 @@ public class Spawner : MonoBehaviour
         string holderName = "Generated Objects";
         if (transform.Find(holderName))
             DestroyImmediate(transform.Find(holderName).gameObject);
-
+        selectedIndex.Clear();
         activeObjects = new List<MatchingObject>();
         objectHolder = new GameObject(holderName).transform;
         objectHolder.parent = transform;
@@ -37,8 +38,17 @@ public class Spawner : MonoBehaviour
                 return;
             for (int j = 0; j < Random.Range(1, pairCount + 1); j++) 
             {
-                var matchingObject_01 = Instantiate(objectPrefabs[i], GetRandomPos(), Random.rotation, objectHolder);
-                var matchingObject_02 = Instantiate(objectPrefabs[i], GetRandomPos(), Random.rotation, objectHolder);
+                int randomIndex;
+
+                do
+                {
+                    randomIndex = Random.Range(0, objectPrefabs.Length - 1);
+                }
+                while (selectedIndex.Contains(randomIndex));
+                selectedIndex.Add(randomIndex);
+
+                var matchingObject_01 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
+                var matchingObject_02 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
                 activeObjects.Add(matchingObject_01);
                 activeObjects.Add(matchingObject_02);
             }           
