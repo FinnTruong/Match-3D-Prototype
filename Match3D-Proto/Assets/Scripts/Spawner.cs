@@ -52,4 +52,15 @@ public class Spawner : MonoBehaviour
         return new Vector3((int)Random.Range(minX, maxX), Random.Range(minY, maxY), (int)Random.Range(minZ, maxZ));
     }
 
+    public void CheckCompleteLevel()
+    {
+        for (int i = 0; i < activeObjects.Count; i++)
+        {
+            if (activeObjects[i].gameObject.activeSelf)
+                return;
+        }
+        Debug.Log("Complete");
+        SpawnObjects();
+    }
+
 }

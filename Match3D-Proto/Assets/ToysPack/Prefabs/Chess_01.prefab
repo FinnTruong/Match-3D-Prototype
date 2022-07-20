@@ -1891,7 +1891,7 @@ Transform:
   m_GameObject: {fileID: 5450525928196540350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 7366360017189091484}
   - {fileID: 3455976061957149714}
@@ -1945,8 +1945,10 @@ MonoBehaviour:
   moveSpeed: 200
   force: 1.5
   rotateForce: 5
-  height: 28
+  expelForce: 35
+  height: 30
   isInRange: 0
+  isChecking: 0
 --- !u!54 &8605191406450492564
 Rigidbody:
   m_ObjectHideFlags: 0

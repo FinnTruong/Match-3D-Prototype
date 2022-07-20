@@ -9,7 +9,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+Match-3D-Prototype/[Ll]ibrary/
 # Build results
 [Ll]ibrary/
 [Tt]emp/
@@ -782,4 +782,18 @@ Match3D-Proto/Temp/ApiUpdater_CheckMovedFrom8bb832a6a0bd68a4096a1bd86f1177c5
 Match3D-Proto/Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json
 Match3D-Proto/Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json
 Match3D-Proto/Assembly-CSharp-Editor.csproj
+Match3D-Proto/Assembly-CSharp.csproj
+Match3D-Proto/Match3D-Proto.sln
+Match3D-Proto/Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json
+Match3D-Proto/Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json
+Match3D-Proto/Library/SourceAssetDB
+Match3D-Proto/Library/ShaderCache/EditorEncounteredVariants
+Match3D-Proto/Library/ShaderCache.db
+Match3D-Proto/Library/ScriptMapper
+Match3D-Proto/Library/ScriptAssemblies/Assembly-CSharp.dll
+Match3D-Proto/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+Match3D-Proto/Library/SceneVisibilityState.asset
+Match3D-Proto/Library/InspectorExpandedItems.asset
+Match3D-Proto/Library/EditorInstance.json
+Match3D-Proto/Library/ArtifactDB
 Match3D-Proto/Assembly-CSharp.csproj

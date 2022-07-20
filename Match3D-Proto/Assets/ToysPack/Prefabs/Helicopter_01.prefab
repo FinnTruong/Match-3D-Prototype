@@ -102,8 +102,10 @@ MonoBehaviour:
   moveSpeed: 200
   force: 1.5
   rotateForce: 5
-  height: 28
+  expelForce: 35
+  height: 30
   isInRange: 0
+  isChecking: 0
 --- !u!54 &-5085699448437415762
 Rigidbody:
   m_ObjectHideFlags: 0
