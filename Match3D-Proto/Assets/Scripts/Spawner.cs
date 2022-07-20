@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public MatchingObject[] objectPrefabs;
+    public int objectCount = 25;
     public int pairCount = 5;
     public float minX, maxX, minY, maxY, minZ, maxZ;
     private Transform objectHolder;
@@ -32,10 +33,12 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < objectPrefabs.Length; i++)
         {
+            if (i > objectCount)
+                return;
             for (int j = 0; j < Random.Range(1, pairCount + 1); j++) 
             {
-                var matchingObject_01 = Instantiate(objectPrefabs[i], GetRandomPos(), Quaternion.identity, objectHolder);
-                var matchingObject_02 = Instantiate(objectPrefabs[i], GetRandomPos(), Quaternion.identity, objectHolder);
+                var matchingObject_01 = Instantiate(objectPrefabs[i], GetRandomPos(), Random.rotation, objectHolder);
+                var matchingObject_02 = Instantiate(objectPrefabs[i], GetRandomPos(), Random.rotation, objectHolder);
                 activeObjects.Add(matchingObject_01);
                 activeObjects.Add(matchingObject_02);
             }           

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_GeometryGrass
+  m_Shader: {fileID: 4800000, guid: a02c32651d6a76c44b1a25babccefdd8, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _AmbientStrength: 0.442
+    - _BladeCurve: 1
+    - _BladeForward: 0.38
+    - _GrassHeight: 1
+    - _GrassWidth: 0.15
+    - _MaxDist: 60
+    - _MinDist: 40
+    - _Rad: 0.131
+    - _Radius: 1
+    - _RandomHeight: 1
+    - _Strength: 5
+    - _WindSpeed: 100
+    - _WindStrength: 0.05
+    m_Colors:
+    - _BottomColor: {r: 0.31719476, g: 0.8301887, b: 0.48883176, a: 1}
+    - _TopColor: {r: 0.9056604, g: 0.9056604, b: 0.18369527, a: 1}
+  m_BuildTextureStacks: []

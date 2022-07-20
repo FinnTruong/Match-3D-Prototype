@@ -8,8 +8,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6181244247413093640, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
+      propertyPath: height
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181244247413093640, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
       propertyPath: rotateForce
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181244247413093641, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181244247413093641, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
       propertyPath: m_AngularDrag

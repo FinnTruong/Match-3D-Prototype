@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6181244247413093641, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6181244247413093645, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -65,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181244247413095155, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
       propertyPath: m_Name
-      value: PurpleCube
+      value: PurpleCube Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a059abddc3aea5946ae6e61a4e097d45, type: 3}
