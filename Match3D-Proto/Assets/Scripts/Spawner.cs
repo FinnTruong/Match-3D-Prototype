@@ -5,12 +5,22 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public MatchingObject[] objectPrefabs;
+    [Header("Level Variables")]
     public int objectCount = 25;
     public int pairCount = 5;
     public float minX, maxX, minY, maxY, minZ, maxZ;
     private Transform objectHolder;
     public List<MatchingObject> activeObjects = new List<MatchingObject>();
     private List<int> selectedIndex = new List<int>();
+
+    [Space]
+    [Header("Matching Object Attributes")]
+    public float moveSpeed = 200f;
+    public float throwForce = 1.5f;
+    public float maxThrowDirLength = 2f;
+    public float rotateForce = 1f;
+    public float expelForce = 50f;
+    public float height = 1f;
 
 
     private void Start()
@@ -49,6 +59,8 @@ public class Spawner : MonoBehaviour
 
                 var matchingObject_01 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
                 var matchingObject_02 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
+                matchingObject_01.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height);
+                matchingObject_02.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height);
                 activeObjects.Add(matchingObject_01);
                 activeObjects.Add(matchingObject_02);
             }           

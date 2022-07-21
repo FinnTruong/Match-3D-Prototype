@@ -8,12 +8,12 @@ public class MatchingObject : MonoBehaviour
     public Renderer renderer;
     private Vector3 oldMousePos;
     private MatchingManager matchingManager;
-    private int pairId = -1;
 
     [Space]
     [Header("Movement Variables")]
     public float moveSpeed = 200f;
-    public float force = 1.5f;
+    public float throwForce = 1.5f;
+    public float maxThrowDirLength = 2f;
     public float rotateForce = 1f;
     public float expelForce = 50f;
     public float height = 1f;
@@ -21,12 +21,34 @@ public class MatchingObject : MonoBehaviour
 
     public bool isInRange;
     public bool isChecking;
+    public bool triggerThrow;
+    public bool triggerExpel;
+
+    private Vector3 throwDir;
+    private Vector3 rotateDir;
     void Start()
     {
         matchingManager = MatchingManager.Instance;
         rigidbody = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
         //renderer.material.DisableKeyword("_EMISSION");
+    }
+
+    private void FixedUpdate()
+    {
+        if(triggerThrow)
+        {
+            triggerThrow = false;
+            rigidbody.AddForce(throwDir * throwForce, ForceMode.Impulse);
+            rigidbody.AddTorque(rotateDir * rotateForce);
+        }
+
+        if(triggerExpel)
+        {
+            triggerExpel = false;
+            rigidbody.AddForce(Vector3.forward * expelForce + Vector3.up, ForceMode.Impulse);
+            rigidbody.AddTorque(Vector3.forward * rotateForce);
+        }
     }
 
     #region MOVEMENT LOGIC
@@ -99,8 +121,7 @@ public class MatchingObject : MonoBehaviour
                         matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo);
                         rigidbody.isKinematic = false;
                         rigidbody.velocity = Vector3.zero;
-                        rigidbody.AddForce(Vector3.forward * expelForce + Vector3.up, ForceMode.Impulse);
-                        rigidbody.AddTorque(Vector3.forward * rotateForce);
+                        triggerExpel = true;
                     }
                     break;
                 case MatchingState.Full:
@@ -117,23 +138,22 @@ public class MatchingObject : MonoBehaviour
             rigidbody.isKinematic = false;
             rigidbody.velocity = Vector3.zero;
             var delta = mousePos - oldMousePos;
-            var throwDir = new Vector3(delta.x, 0, delta.y);
-            var rotateDir = new Vector3(delta.y, 0, -delta.x);
-            rigidbody.AddForce(throwDir * force, ForceMode.Impulse);
-            rigidbody.AddTorque(rotateDir * rotateForce);
+            throwDir = new Vector3(delta.x, 0, delta.y);
+            throwDir = Vector3.ClampMagnitude(throwDir, maxThrowDirLength);
+            Debug.Log(throwDir);
+            rotateDir = new Vector3(delta.y, 0, -delta.x);
+            rotateDir = Vector3.ClampMagnitude(rotateDir, maxThrowDirLength);
+            triggerThrow = true;
         }
     }
-
-    IEnumerator Squish()
+    
+    public void SetData(float _moveSpeed, float _maxDirLength, float _throwForce, float _rotateForce, float _expelForce, float _height)
     {
-        Vector3 startScale = transform.localScale;
-        float percent = 0f;
-        while(percent<1f)
-        {
-            //transform.localScale = Vector3.Lerp(startScale, )
-            yield return null;
-            
-        }
+        moveSpeed = _moveSpeed;
+        maxThrowDirLength = _maxDirLength;
+        throwForce = _throwForce;
+        rotateForce = _rotateForce;
+        expelForce = _expelForce;
+        height = _height;
     }
-
 }
