@@ -7,13 +7,13 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     AudioSource[] musicSources;
-    public AudioSource[] ambienceSources;
+    AudioSource[] ambienceSources;
     AudioSource sfxSources;
     AudioSource collisionSFXSource;
 
     int activeMusicSourceIndex;
     int activeAmbienceSourceIndex;
-
+    float volume = 0.7f;
 
     SoundLibrary library;
 
@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
         {
             GameObject newMusicSources = new GameObject("Music Sources " + (i + 1));
             musicSources[i] = newMusicSources.AddComponent<AudioSource>();
+            musicSources[i].volume = 0.7f;
             musicSources[i].loop = true;
             newMusicSources.transform.parent = transform;
         }
@@ -77,11 +78,12 @@ public class AudioManager : MonoBehaviour
         newCollisionSFXSource.transform.parent = transform;
     }
 
-    public void PlayMusic(AudioClip clip, float fadeDuration = 1)
+    public void PlayMusic(AudioClip clip, float volume = 0.7f, float fadeDuration = 1)
     {
         activeMusicSourceIndex = 1 - activeMusicSourceIndex; //The active music source will switch between 0 and 1
 
         musicSources[activeMusicSourceIndex].clip = clip;
+        this.volume = volume;
         if (clip != null)
             musicSources[activeMusicSourceIndex].Play();
 
@@ -93,11 +95,12 @@ public class AudioManager : MonoBehaviour
     //    StartCoroutine(FadeOutMusic(fadeDuration));
     //}
 
-    public void PlayAmbience(AudioClip clip, float fadeDuration = 0.5f)
+    public void PlayAmbience(AudioClip clip, float volume = 0.7f, float fadeDuration = 0.5f)
     {
         activeAmbienceSourceIndex = 1 - activeAmbienceSourceIndex; //The active music source will switch between 0 and 1
 
         ambienceSources[activeAmbienceSourceIndex].clip = clip;
+        this.volume = volume;
         if (clip != null)
             ambienceSources[activeAmbienceSourceIndex].Play();
 
@@ -174,8 +177,8 @@ public class AudioManager : MonoBehaviour
         while (percent < 1)
         {
             percent += Time.deltaTime * 1 / duration;
-            ambienceSources[activeAmbienceSourceIndex].volume = Mathf.Lerp(0, 1, percent);
-            ambienceSources[1 - activeAmbienceSourceIndex].volume = Mathf.Lerp(1, 0, percent);
+            ambienceSources[activeAmbienceSourceIndex].volume = Mathf.Lerp(0, volume, percent);
+            ambienceSources[1 - activeAmbienceSourceIndex].volume = Mathf.Lerp(1, volume, percent);
             yield return null;
         }
     }

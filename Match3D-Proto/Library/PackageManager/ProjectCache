@@ -5,21 +5,72 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637938079588887461
-    m_Hash: 749159489
+      ticks: 637939926306180362
+    m_Hash: 4206836711
   m_LockFileStatus:
     m_FilePath: E:/Match-3D-Prototype/Match3D-Proto/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637938079589012744
-    m_Hash: 2247700291
+      ticks: 637939926306340376
+    m_Hash: 2134670485
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
+    - packageId: com.coffee.ui-particle@https://github.com/mob-sakai/ParticleEffectForUGUI.git#4.1.4
+      testable: 0
+      isDirectDependency: 1
+      version: 4.1.4
+      source: 5
+      resolvedPath: E:\Match-3D-Prototype\Match3D-Proto\Library\PackageCache\com.coffee.ui-particle@4edcef1bbf
+      assetPath: Packages/com.coffee.ui-particle
+      name: com.coffee.ui-particle
+      displayName: UI Particle
+      author:
+        name: mob-sakai
+        email: sakai861104@gmail.com
+        url: https://github.com/mob-sakai
+      category: 
+      type: 
+      description: 'This plugin provide a component to render particle effect for
+        uGUI.
+
+        The particle rendering is maskable and sortable, without Camera,
+        RenderTexture or Canvas.'
+      status: 4
+      errors: []
+      versions:
+        all: []
+        compatible: []
+        verified: 
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - ui
+      - particle
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/mob-sakai/ParticleEffectForUGUI.git
+        revision: 
+        path: 
     - packageId: com.unity.2d.sprite@1.0.0
       testable: 0
       isDirectDependency: 1
@@ -682,6 +733,7 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 1.1.33
         - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
@@ -689,10 +741,11 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 1.1.33
         - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
-        verified: 1.1.31
+        verified: 1.1.33
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6

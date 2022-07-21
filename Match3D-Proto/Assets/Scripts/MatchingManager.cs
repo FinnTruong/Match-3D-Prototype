@@ -51,9 +51,18 @@ public class MatchingManager : MonoBehaviour
     }
     public bool IsInRange(Vector3 position)
     {
-        var distance = transform.position - position;
-        distance.y = 0;
+        var checkerPos = transform.position;
+        checkerPos.y = 0;
+        position.y = 0;
+        var distance = checkerPos - position;
         return distance.magnitude < distanceThreshold;
+    }
+
+    public void ResetState()
+    {
+        state = MatchingState.Empty;
+        leftObject = null;
+        rightObject = null;
     }
     private void OnDrawGizmos()
     {
@@ -83,6 +92,8 @@ public class MatchingManager : MonoBehaviour
         }
         anim.SetTrigger("Open");
         matchVFX.Play();
+        AudioManager.instance.PlaySFX("Match", 1f);
+        Vibration.Vibrate(100);
         percent = 0f;
         object01StartScale = matchingObject_01.transform.localScale;
         object02StartScale = matchingObject_02.transform.localScale;
@@ -96,6 +107,11 @@ public class MatchingManager : MonoBehaviour
         }
         matchingObject_01.gameObject.SetActive(false);
         matchingObject_02.gameObject.SetActive(false);
+        spawner.activeObjects.Remove(matchingObject_01);
+        spawner.activeObjects.Remove(matchingObject_02);
+        if (matchingObject_01 == spawner.highlightObject_01 || matchingObject_01.pairedObject == spawner.highlightObject_01)
+            spawner.hintTimer = 0;
+        yield return new WaitForSeconds(0.2f);
         spawner.CheckCompleteLevel();
     }
 

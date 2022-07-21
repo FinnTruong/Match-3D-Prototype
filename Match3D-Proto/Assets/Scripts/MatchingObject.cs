@@ -4,10 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 public class MatchingObject : MonoBehaviour
 {
-    private Rigidbody rigidbody;
-    public Renderer renderer;
+    private Rigidbody rb;
+    public List<Renderer> renderers = new List<Renderer>();
     private Vector3 oldMousePos;
     private MatchingManager matchingManager;
+    public MatchingObject pairedObject;
 
     [Space]
     [Header("Movement Variables")]
@@ -26,36 +27,42 @@ public class MatchingObject : MonoBehaviour
 
     private Vector3 throwDir;
     private Vector3 rotateDir;
+
+    private bool triggerHint;
     void Start()
     {
         matchingManager = MatchingManager.Instance;
-        rigidbody = GetComponent<Rigidbody>();
-        renderer = GetComponent<Renderer>();
-        //renderer.material.DisableKeyword("_EMISSION");
+        rb = GetComponent<Rigidbody>();
     }
 
+    private void OnValidate()
+    {
+        renderers.Clear();
+        renderers.AddRange(GetComponentsInChildren<Renderer>());
+    }
     private void FixedUpdate()
     {
         if(triggerThrow)
         {
             triggerThrow = false;
-            rigidbody.AddForce(throwDir * throwForce, ForceMode.Impulse);
-            rigidbody.AddTorque(rotateDir * rotateForce);
+            rb.AddForce(throwDir * throwForce, ForceMode.Impulse);
+            rb.AddTorque(rotateDir * rotateForce);
         }
 
         if(triggerExpel)
         {
             triggerExpel = false;
-            rigidbody.AddForce(Vector3.forward * expelForce + Vector3.up, ForceMode.Impulse);
-            rigidbody.AddTorque(Vector3.forward * rotateForce);
+            rb.AddForce(Vector3.forward * expelForce + Vector3.up, ForceMode.Impulse);
+            rb.AddTorque(Vector3.forward * rotateForce);
         }
     }
 
     #region MOVEMENT LOGIC
     void OnMouseDown()
-    {        
+    {
+        //AudioManager.instance.PlaySFX("PickUp", 1f);
         //renderer.material.EnableKeyword("_EMISSION");
-        rigidbody.isKinematic = true;
+        rb.isKinematic = true;
         if (isChecking)
         {
             switch (matchingManager.state)
@@ -118,9 +125,10 @@ public class MatchingObject : MonoBehaviour
                     }
                     else
                     {
+                        AudioManager.instance.PlaySFX("Error", 0.7f);
                         matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo);
-                        rigidbody.isKinematic = false;
-                        rigidbody.velocity = Vector3.zero;
+                        rb.isKinematic = false;
+                        rb.velocity = Vector3.zero;
                         triggerExpel = true;
                     }
                     break;
@@ -135,12 +143,11 @@ public class MatchingObject : MonoBehaviour
         {
             isChecking = false;
             var mousePos = Input.mousePosition;
-            rigidbody.isKinematic = false;
-            rigidbody.velocity = Vector3.zero;
+            rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
             var delta = mousePos - oldMousePos;
             throwDir = new Vector3(delta.x, 0, delta.y);
             throwDir = Vector3.ClampMagnitude(throwDir, maxThrowDirLength);
-            Debug.Log(throwDir);
             rotateDir = new Vector3(delta.y, 0, -delta.x);
             rotateDir = Vector3.ClampMagnitude(rotateDir, maxThrowDirLength);
             triggerThrow = true;
@@ -156,4 +163,13 @@ public class MatchingObject : MonoBehaviour
         expelForce = _expelForce;
         height = _height;
     }
+
+    public void SetHint(bool flag)
+    {
+        Debug.Log("Set Hint: " + flag);
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            renderers[i].material.SetInt("_Hint", flag ? 1 : 0);
+        }
+    }    
 }
