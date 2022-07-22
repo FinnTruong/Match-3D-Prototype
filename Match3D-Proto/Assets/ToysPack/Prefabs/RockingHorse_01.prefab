@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6087121511800056499}
   - component: {fileID: 1747834003763533937}
   - component: {fileID: 3339610012578955697}
+  - component: {fileID: -783960153703806893}
   m_Layer: 8
   m_Name: RockingHorse_01
   m_TagString: Untagged
@@ -96,14 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 5329668223714234651}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: -783960153703806893}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &1747834003763533937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 811702113986091684, guid: 0b1be9e0364a83f49a2b682bbc815b58, type: 3}
+--- !u!114 &-783960153703806893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893557208578172359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

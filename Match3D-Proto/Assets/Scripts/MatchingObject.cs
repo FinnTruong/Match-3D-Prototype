@@ -9,6 +9,7 @@ public class MatchingObject : MonoBehaviour
     private Vector3 oldMousePos;
     private MatchingManager matchingManager;
     public MatchingObject pairedObject;
+    public Outline outlineEffect;
 
     [Space]
     [Header("Movement Variables")]
@@ -19,7 +20,7 @@ public class MatchingObject : MonoBehaviour
     public float expelForce = 50f;
     public float height = 1f;
 
-
+    public bool isHolding;
     public bool isInRange;
     public bool isChecking;
     public bool triggerThrow;
@@ -33,12 +34,20 @@ public class MatchingObject : MonoBehaviour
     {
         matchingManager = MatchingManager.Instance;
         rb = GetComponent<Rigidbody>();
+
     }
 
     private void OnValidate()
     {
-        renderers.Clear();
-        renderers.AddRange(GetComponentsInChildren<Renderer>());
+        outlineEffect = GetComponent<Outline>();
+    }
+
+    private void Update()
+    {
+        if(!isHolding && matchingManager.IsInRange(transform.position))
+        {
+            //
+        }
     }
     private void FixedUpdate()
     {
@@ -62,6 +71,7 @@ public class MatchingObject : MonoBehaviour
     {
         //AudioManager.instance.PlaySFX("PickUp", 1f);
         //renderer.material.EnableKeyword("_EMISSION");
+
         rb.isKinematic = true;
         if (isChecking)
         {
@@ -106,38 +116,7 @@ public class MatchingObject : MonoBehaviour
     {
         if(matchingManager.IsInRange(transform.position) && !isChecking)
         {
-            switch (matchingManager.state)
-            {
-                case MatchingState.Empty:
-                    transform.DOMove(matchingManager.leftPos.position, 0.3f);
-                    transform.DORotate(Vector3.zero, 0.3f);
-                    matchingManager.state = MatchingState.Half;
-                    matchingManager.leftObject = this;
-                    isChecking = true;
-                    break;
-                case MatchingState.Half:
-                    if(matchingManager.IsMatch(this.gameObject.name))
-                    {
-                        transform.DOMove(matchingManager.rightPos.position, 0.3f);
-                        transform.DORotate(Vector3.zero, 0.3f).OnComplete(() => matchingManager.OnMatch());
-                        matchingManager.state = MatchingState.Full;
-                        matchingManager.rightObject = this;
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlaySFX("Error", 0.7f);
-                        matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo);
-                        rb.isKinematic = false;
-                        rb.velocity = Vector3.zero;
-                        triggerExpel = true;
-                    }
-                    break;
-                case MatchingState.Full:
-
-                    break;
-                default:
-                    break;
-            }
+            OnInRange();
         }
         else
         {
@@ -154,7 +133,7 @@ public class MatchingObject : MonoBehaviour
         }
     }
     
-    public void SetData(float _moveSpeed, float _maxDirLength, float _throwForce, float _rotateForce, float _expelForce, float _height)
+    public void SetData(float _moveSpeed, float _maxDirLength, float _throwForce, float _rotateForce, float _expelForce, float _height, Color outlineColor, float outlineWidth)
     {
         moveSpeed = _moveSpeed;
         maxThrowDirLength = _maxDirLength;
@@ -162,14 +141,58 @@ public class MatchingObject : MonoBehaviour
         rotateForce = _rotateForce;
         expelForce = _expelForce;
         height = _height;
+        SetOutline(outlineColor, outlineWidth);
     }
-
+    public void SetOutline(Color color, float width)
+    {
+        if (outlineEffect == null) return;
+        outlineEffect.enabled = false;
+        outlineEffect.OutlineColor = color;
+        outlineEffect.OutlineWidth = width;
+    }
     public void SetHint(bool flag)
     {
         Debug.Log("Set Hint: " + flag);
         for (int i = 0; i < renderers.Count; i++)
         {
-            renderers[i].material.SetInt("_Hint", flag ? 1 : 0);
+            outlineEffect.enabled = flag;
+            //renderers[i].material.SetInt("_Hint", flag ? 1 : 0);
         }
     }    
+
+    private void OnInRange()
+    {
+        switch (matchingManager.state)
+        {
+            case MatchingState.Empty:
+                transform.DOMove(matchingManager.leftPos.position, 0.3f);
+                transform.DORotate(Vector3.zero, 0.3f);
+                matchingManager.state = MatchingState.Half;
+                matchingManager.leftObject = this;
+                isChecking = true;
+                break;
+            case MatchingState.Half:
+                if (matchingManager.IsMatch(this.gameObject.name))
+                {
+                    transform.DOMove(matchingManager.rightPos.position, 0.3f);
+                    transform.DORotate(Vector3.zero, 0.3f).OnComplete(() => matchingManager.OnMatch());
+                    matchingManager.state = MatchingState.Full;
+                    matchingManager.rightObject = this;
+                }
+                else
+                {
+                    AudioManager.instance.PlaySFX("Error", 0.7f);
+                    matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo);
+                    rb.isKinematic = false;
+                    rb.velocity = Vector3.zero;
+                    triggerExpel = true;
+                }
+                break;
+            case MatchingState.Full:
+
+                break;
+            default:
+                break;
+        }
+    }
 }

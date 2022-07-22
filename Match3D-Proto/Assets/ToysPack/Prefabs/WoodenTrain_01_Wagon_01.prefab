@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1973050401790936623}
   - component: {fileID: -8009410912917330047}
   - component: {fileID: 936859009113846737}
+  - component: {fileID: 2605167067522029819}
   m_Layer: 8
   m_Name: WoodenTrain_01_Wagon_01
   m_TagString: Untagged
@@ -96,14 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 489131566359146512}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 2605167067522029819}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &-8009410912917330047
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4938525043162612099, guid: dc6a99a587dea8c45b12db70757e08fd, type: 3}
+--- !u!114 &2605167067522029819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274542650576288609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

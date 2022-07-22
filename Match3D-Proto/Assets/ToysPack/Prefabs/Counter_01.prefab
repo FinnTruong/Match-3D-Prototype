@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5744949299117335537}
   - component: {fileID: 6443004912344636905}
   - component: {fileID: -6539122363716988064}
+  - component: {fileID: -4967842769948070894}
   m_Layer: 8
   m_Name: Counter_01
   m_TagString: Untagged
@@ -192,14 +193,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 242472933306488625}
+  - {fileID: 2274515911673757493}
+  - {fileID: 2811814403409239916}
+  - {fileID: 3969212309994029453}
+  - {fileID: 23892151658863989}
+  - {fileID: 3251365300190131950}
+  - {fileID: 8933745418841770502}
+  - {fileID: 820187988361314947}
+  - {fileID: 4229911009338750404}
+  - {fileID: 6000486276228394742}
+  - {fileID: 7262169385751790929}
+  - {fileID: 4155484284925778482}
+  - {fileID: 3240462966561854976}
+  - {fileID: 5930852591794876965}
+  - {fileID: 5369241853694761760}
+  - {fileID: 2801081493712028597}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: -4967842769948070894}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &6443004912344636905
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -230,6 +253,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1850988826981547465, guid: 97a782b4391ac48448ebd011fd09eb18, type: 3}
+--- !u!114 &-4967842769948070894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973062438743139309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2258763061777670286
 GameObject:
   m_ObjectHideFlags: 0

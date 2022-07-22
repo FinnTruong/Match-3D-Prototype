@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     public int pairCount = 5;
     public float minX, maxX, minY, maxY, minZ, maxZ;
     private Transform objectHolder;
-    public List<MatchingObject> activeObjects = new List<MatchingObject>();
+    [HideInInspector] public List<MatchingObject> activeObjects = new List<MatchingObject>();
     private List<int> selectedIndex = new List<int>();
     public MatchingManager matchingManager;
 
@@ -30,6 +30,12 @@ public class Spawner : MonoBehaviour
     public float hintTime = 5f;
 
     public UnityEvent onCompleteEvent;
+
+    [Space]
+    [Header("Outline Effect Attributes")]
+    public Color outlineColor;
+    [Range(0,10)]
+    public float outlineWidth;
     private void Start()
     {
         SpawnObjects();
@@ -60,6 +66,7 @@ public class Spawner : MonoBehaviour
     public void SpawnObjects()
     {
         Init();
+        hintTimer = 0f;
         matchingManager.ResetState();
         highlightObject_01 = null;
         highlightObject_02 = null;
@@ -80,8 +87,8 @@ public class Spawner : MonoBehaviour
 
                 var matchingObject_01 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
                 var matchingObject_02 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
-                matchingObject_01.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height);
-                matchingObject_02.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height);
+                matchingObject_01.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height, outlineColor, outlineWidth);
+                matchingObject_02.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height,outlineColor, outlineWidth);
                 matchingObject_01.pairedObject = matchingObject_02;
                 matchingObject_02.pairedObject = matchingObject_01;
                 activeObjects.Add(matchingObject_01);

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7341190459313834969}
   - component: {fileID: -1634093973739347296}
   - component: {fileID: -2319614993377836567}
+  - component: {fileID: -8918903189941027645}
   m_Layer: 8
   m_Name: SortingCube_01_Block_Cylinder
   m_TagString: Untagged
@@ -96,14 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 4235222757646702189}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: -8918903189941027645}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &-1634093973739347296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4502528959513061073, guid: a1d1886444614254ca3948debb7d6a3d, type: 3}
+--- !u!114 &-8918903189941027645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991787300867662570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

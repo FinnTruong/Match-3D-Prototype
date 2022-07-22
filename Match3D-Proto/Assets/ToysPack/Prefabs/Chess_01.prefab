@@ -1875,6 +1875,7 @@ GameObject:
   - component: {fileID: 4126121556655614431}
   - component: {fileID: 8605191406450492564}
   - component: {fileID: 2194578644793736535}
+  - component: {fileID: 8473695932807412406}
   m_Layer: 8
   m_Name: Chess_01
   m_TagString: Untagged
@@ -1891,7 +1892,7 @@ Transform:
   m_GameObject: {fileID: 5450525928196540350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_Children:
   - {fileID: 7366360017189091484}
   - {fileID: 3455976061957149714}
@@ -1941,14 +1942,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 1435302856640325334}
+  - {fileID: 1528688833062371345}
+  - {fileID: 1486318492494602349}
+  - {fileID: 275824417947361232}
+  - {fileID: 1522797072531336019}
+  - {fileID: 5682413116118631991}
+  - {fileID: 4367701005856616276}
+  - {fileID: 2388689160985254114}
+  - {fileID: 355244968618612220}
+  - {fileID: 8649630486474095078}
+  - {fileID: 3445110453066324874}
+  - {fileID: 5045811755822436517}
+  - {fileID: 6719721804428511021}
+  - {fileID: 6707542331261938207}
+  - {fileID: 2605038602195785501}
+  - {fileID: 7880368977700903617}
+  - {fileID: 4945076453092141555}
+  - {fileID: 6933184275529934}
+  - {fileID: 3562266103909447890}
+  - {fileID: 3418894118366362123}
+  - {fileID: 5440681577232012992}
+  - {fileID: 2220327835519987466}
+  - {fileID: 1410669313133290251}
+  - {fileID: 5537120311400763991}
+  - {fileID: 656457462022176799}
+  - {fileID: 5239407258308650447}
+  - {fileID: 789223731653117951}
+  - {fileID: 6803859098338585637}
+  - {fileID: 7149172119087420835}
+  - {fileID: 739315557058889719}
+  - {fileID: 1200524018590032683}
+  - {fileID: 2858213545264240047}
+  - {fileID: 1295089600784880045}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 8473695932807412406}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &8605191406450492564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1978,6 +2018,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5529751, y: 0.110526964, z: 0.5570009}
   m_Center: {x: -0.0025012891, y: 0.055935316, z: 0.00015771389}
+--- !u!114 &8473695932807412406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450525928196540350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5755401094284843378
 GameObject:
   m_ObjectHideFlags: 0

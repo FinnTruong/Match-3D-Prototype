@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: -6624991474701236291}
   - component: {fileID: 4531297814188781113}
   - component: {fileID: -3555192400251909011}
+  - component: {fileID: -5646102945645926868}
   m_Layer: 8
   m_Name: Car_01
   m_TagString: Untagged
@@ -273,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 4623697372502405886}
   m_LocalRotation: {x: 0.000000021855694, y: -0.00000004371139, z: 9.055528e-16, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 2237827440250370402}
   - {fileID: 3317871118297963817}
@@ -343,13 +344,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 6347395208731919906}
+  - {fileID: 486212993203576305}
+  - {fileID: 2592446185451471767}
+  - {fileID: 7121476533086065514}
+  - {fileID: 3414487446297219513}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: -5646102945645926868}
   moveSpeed: 200
   throwForce: 1.5
   maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
   triggerThrow: 0
@@ -384,6 +393,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6151557186590063269, guid: 8d2bbd1d223b22b49832b91ac5b322ed, type: 3}
+--- !u!114 &-5646102945645926868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623697372502405886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6629765350218951331
 GameObject:
   m_ObjectHideFlags: 0

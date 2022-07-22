@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1333590976053474926}
   - component: {fileID: -7098412172051420137}
   - component: {fileID: -8860976197297331259}
+  - component: {fileID: 1716723610060956951}
   m_Layer: 8
   m_Name: Ball_01
   m_TagString: Untagged
@@ -96,13 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 2615539751472014939}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 1716723610060956951}
   moveSpeed: 200
   throwForce: 1.5
   maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
   triggerThrow: 0
@@ -137,3 +142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2912693103386899216, guid: 371e9db7876995147bceca5c0aa742ef, type: 3}
+--- !u!114 &1716723610060956951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355145248397398663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -21,18 +21,27 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Toys_TextureAtlas_01
-  m_Shader: {fileID: -6465566751694194690, guid: 0c408238c3abf1f41a2259efec768338, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_14f7dc684f9841089a587dac5eec317c:
+        m_Texture: {fileID: 2800000, guid: aba46be8874f750459dba3e50279fae7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_5f9b7f0bf1e1445c9df2e07052407771:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_ca04d0a026d34c9fba1d7831d58ce6d8:
         m_Texture: {fileID: 2800000, guid: aba46be8874f750459dba3e50279fae7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -94,6 +103,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Boolean_311f668de3714af58a41b712a1340833: 0
+    - Boolean_6575e9af61df4d22873198b97cd61d2b: 0
+    - Vector1_0eb33243de7f46b3af44f3a5b8044647: 0.06
+    - Vector1_2601d41c6ff344ac978c586859080457: 0.1
+    - Vector1_542ed7ab9c9749f8857aa49e5f431fa3: 1
+    - Vector1_94843f4b9b8843e383c9ed0f2465d471: 1
+    - Vector1_e6a72b2cbfe544f291b6564c253be877: 0.6
     - Vector1_ec9baa6340ed4f62bd8e92710189f880: 2
     - _AlphaClip: 0
     - _Blend: 0
@@ -116,18 +131,21 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Thickness: 1.1
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Color_92bcf880104843b08f26350b9fc0e319: {r: 0.53333336, g: 2.9960785, b: 0.76862746, a: 1}
+    - Color_b0de544ccb1f431d8c614c562df223a7: {r: 0, g: 0.827451, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 7.920009, b: 12.58865, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

@@ -86,10 +86,12 @@ public class MatchingManager : MonoBehaviour
             percent += Time.deltaTime / animationDuration;
             matchingObject_01.transform.localPosition = Vector3.Lerp(leftPos.position, centerPos.position, percent);           
             matchingObject_02.transform.localPosition = Vector3.Lerp(rightPos.position, centerPos.position, percent);
-            matchingObject_01.transform.localScale = Vector3.Lerp(object01StartScale, object01StartScale + Vector3.one * 1.5f, percent);
-            matchingObject_02.transform.localScale = Vector3.Lerp(object02StartScale, object02StartScale + Vector3.one * 1.5f, percent);
+            matchingObject_01.transform.localScale = Vector3.Lerp(object01StartScale, object01StartScale + Vector3.one * 1.2f, percent);
+            matchingObject_02.transform.localScale = Vector3.Lerp(object02StartScale, object02StartScale + Vector3.one * 1.2f, percent);
             yield return null;
         }
+
+        yield return new WaitForSeconds(0.05f);
         anim.SetTrigger("Open");
         matchVFX.Play();
         AudioManager.instance.PlaySFX("Match", 1f);
@@ -98,7 +100,19 @@ public class MatchingManager : MonoBehaviour
         object01StartScale = matchingObject_01.transform.localScale;
         object02StartScale = matchingObject_02.transform.localScale;
 
-        while(percent<1f)
+        while (percent <1f)
+        {
+            percent += Time.deltaTime / 0.12f;
+            matchingObject_01.transform.localScale = Vector3.Lerp(object01StartScale, object01StartScale + Vector3.one * 3f, percent);
+            matchingObject_02.transform.localScale = Vector3.Lerp(object02StartScale, object02StartScale + Vector3.one * 3f, percent);
+            yield return null;
+        }
+
+        percent = 0f;
+        object01StartScale = matchingObject_01.transform.localScale;
+        object02StartScale = matchingObject_02.transform.localScale;
+
+        while (percent<1f)
         {
             percent += Time.deltaTime / 0.15f;
             matchingObject_01.transform.localScale = Vector3.Lerp(object01StartScale, Vector3.zero, percent);

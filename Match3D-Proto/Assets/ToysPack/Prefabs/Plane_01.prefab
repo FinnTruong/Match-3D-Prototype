@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2533932512814393644}
   - component: {fileID: 211465252816238201}
   - component: {fileID: -3440119979894022243}
+  - component: {fileID: 6567769500886546898}
   m_Layer: 8
   m_Name: Plane_01
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 830730655009019828}
   m_LocalRotation: {x: 0.000000021855694, y: -0.00000004371139, z: 9.055528e-16, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 5631864284556344625}
   m_Father: {fileID: 0}
@@ -97,14 +98,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 1421887533725590376}
+  - {fileID: 7122486787651447076}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 6567769500886546898}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &211465252816238201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,6 +144,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2740600072408011612, guid: de9b46797317e4e4281c40672c6b094d, type: 3}
+--- !u!114 &6567769500886546898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830730655009019828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8281180162072370162
 GameObject:
   m_ObjectHideFlags: 0

@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: -2745083744539248096}
   - component: {fileID: 1431987211792299930}
   - component: {fileID: 523373535964886793}
+  - component: {fileID: 7226772031605495062}
   m_Layer: 8
   m_Name: ToyStacker_01
   m_TagString: Untagged
@@ -264,14 +265,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 738118292304938874}
+  - {fileID: 6307904773398598576}
+  - {fileID: 501378530203844831}
+  - {fileID: 5872592337328730008}
+  - {fileID: 5239615212638351211}
+  - {fileID: 4928921455633860851}
+  - {fileID: 7324176077126832005}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 7226772031605495062}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &1431987211792299930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -302,6 +316,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5299606812721820092, guid: 017e5267fc5f3244cb78c675596c51e8, type: 3}
+--- !u!114 &7226772031605495062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297745472389116838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2697495611294134990
 GameObject:
   m_ObjectHideFlags: 0

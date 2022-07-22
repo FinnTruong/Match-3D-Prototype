@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3973087425699883387}
   - component: {fileID: 5196925081425653881}
   - component: {fileID: -7543598271822389327}
+  - component: {fileID: 7330296840867955907}
   m_Layer: 8
   m_Name: RubberDuck_01
   m_TagString: Untagged
@@ -96,14 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 3372347436690880608}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 7330296840867955907}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &5196925081425653881
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4201434375035617612, guid: c64847829113b3f42975917b8f6a9a80, type: 3}
+--- !u!114 &7330296840867955907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958710445132123324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

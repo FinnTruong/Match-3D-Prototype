@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: -601883380371861355}
   - component: {fileID: -3750202378997738638}
   - component: {fileID: 6759222952959120098}
+  - component: {fileID: 5960029574912040645}
   m_Layer: 8
   m_Name: Bicycle_01
   m_TagString: Untagged
@@ -438,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 7536434783665256469}
   m_LocalRotation: {x: 0.000000021855694, y: -0.00000004371139, z: 9.055528e-16, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 116408181037066136}
   - {fileID: 2027498729649264746}
@@ -507,13 +508,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 8118333770736717001}
+  - {fileID: 6283717196852983915}
+  - {fileID: 6362668067389363514}
+  - {fileID: 4992753361479199889}
+  - {fileID: 4279093317080682282}
+  - {fileID: 1377641306559479546}
+  - {fileID: 7098648294969999792}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 5960029574912040645}
   moveSpeed: 200
   throwForce: 1.5
   maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
   triggerThrow: 0
@@ -548,6 +559,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7585914089287004186, guid: ebe3092d88f43d648827754b51125338, type: 3}
+--- !u!114 &5960029574912040645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536434783665256469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7925252793142929275
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 65732188456061844}
   - component: {fileID: -8340364451362603688}
   - component: {fileID: 6333902221076683984}
+  - component: {fileID: 2772231475739490370}
   m_Layer: 8
   m_Name: ToyTrumpet_01
   m_TagString: Untagged
@@ -48,14 +49,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441c1e906173807429fe75a930805c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
+  renderers:
+  - {fileID: 6481136244383844677}
+  - {fileID: 2875396115447877370}
+  - {fileID: 5367901409176782892}
+  - {fileID: 6509514038521160360}
+  pairedObject: {fileID: 0}
+  outlineEffect: {fileID: 2772231475739490370}
   moveSpeed: 200
-  force: 1.5
+  throwForce: 1.5
+  maxThrowDirLength: 2
   rotateForce: 5
   expelForce: 35
   height: 26
+  isHolding: 0
   isInRange: 0
   isChecking: 0
+  triggerThrow: 0
+  triggerExpel: 0
 --- !u!54 &6333902221076683984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72,6 +83,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2772231475739490370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838328959124623662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &2070482966675850097
 GameObject:
   m_ObjectHideFlags: 0
