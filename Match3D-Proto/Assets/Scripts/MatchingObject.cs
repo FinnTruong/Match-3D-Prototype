@@ -15,14 +15,15 @@ public class MatchingObject : MonoBehaviour
     [Header("Movement Variables")]
     public float moveSpeed = 200f;
     public float throwForce = 1.5f;
-    public float maxThrowDirLength = 2f;
     public float rotateForce = 1f;
     public float expelForce = 50f;
     public float height = 1f;
 
     public bool isHolding;
+    public bool hasPickedUp;
     public bool isInRange;
     public bool isChecking;
+    public bool isBeingExpelled;
     public bool triggerThrow;
     public bool triggerExpel;
 
@@ -44,9 +45,9 @@ public class MatchingObject : MonoBehaviour
 
     private void Update()
     {
-        if(!isHolding && matchingManager.IsInRange(transform.position))
+        if(!isHolding && matchingManager.IsInRange(transform.position) && !isChecking && hasPickedUp && !isBeingExpelled)
         {
-            //
+            OnInRange();
         }
     }
     private void FixedUpdate()
@@ -69,9 +70,10 @@ public class MatchingObject : MonoBehaviour
     #region MOVEMENT LOGIC
     void OnMouseDown()
     {
-        //AudioManager.instance.PlaySFX("PickUp", 1f);
+        AudioManager.instance.PlaySFX("PickUp", 1f);
         //renderer.material.EnableKeyword("_EMISSION");
-
+        hasPickedUp = true;
+        isHolding = true;
         rb.isKinematic = true;
         if (isChecking)
         {
@@ -90,6 +92,7 @@ public class MatchingObject : MonoBehaviour
                     matchingManager.rightObject = null;
                     break;
                 default:
+                    isChecking = false;
                     break;
             }
         }
@@ -108,15 +111,16 @@ public class MatchingObject : MonoBehaviour
 
     void OnMouseUp()
     {
+        isHolding = false;
         OnRelease();
     }
     #endregion
 
     void OnRelease()
     {
-        if(matchingManager.IsInRange(transform.position) && !isChecking)
+        if(matchingManager.IsInRange(transform.position))
         {
-            OnInRange();
+            //OnInRange();
         }
         else
         {
@@ -125,18 +129,19 @@ public class MatchingObject : MonoBehaviour
             rb.isKinematic = false;
             rb.velocity = Vector3.zero;
             var delta = mousePos - oldMousePos;
+            delta.x /= Screen.width;
+            delta.y /= Screen.height;
             throwDir = new Vector3(delta.x, 0, delta.y);
-            throwDir = Vector3.ClampMagnitude(throwDir, maxThrowDirLength);
+            throwDir *= throwForce;
             rotateDir = new Vector3(delta.y, 0, -delta.x);
-            rotateDir = Vector3.ClampMagnitude(rotateDir, maxThrowDirLength);
+            rotateDir *= rotateForce;
             triggerThrow = true;
         }
     }
     
-    public void SetData(float _moveSpeed, float _maxDirLength, float _throwForce, float _rotateForce, float _expelForce, float _height, Color outlineColor, float outlineWidth)
+    public void SetData(float _moveSpeed,float _throwForce, float _rotateForce, float _expelForce, float _height, Color outlineColor, float outlineWidth)
     {
         moveSpeed = _moveSpeed;
-        maxThrowDirLength = _maxDirLength;
         throwForce = _throwForce;
         rotateForce = _rotateForce;
         expelForce = _expelForce;
@@ -165,15 +170,24 @@ public class MatchingObject : MonoBehaviour
         switch (matchingManager.state)
         {
             case MatchingState.Empty:
+                AudioManager.instance.PlaySFX("Whoosh", 1f);
+                rb.isKinematic = true;
+                isChecking = true;
+                hasPickedUp = false;
+                isHolding = false;
                 transform.DOMove(matchingManager.leftPos.position, 0.3f);
                 transform.DORotate(Vector3.zero, 0.3f);
                 matchingManager.state = MatchingState.Half;
                 matchingManager.leftObject = this;
-                isChecking = true;
                 break;
             case MatchingState.Half:
                 if (matchingManager.IsMatch(this.gameObject.name))
                 {
+                    AudioManager.instance.PlaySFX("Whoosh", 1f);
+                    rb.isKinematic = true;
+                    isChecking = true;
+                    hasPickedUp = false;
+                    isHolding = false;
                     transform.DOMove(matchingManager.rightPos.position, 0.3f);
                     transform.DORotate(Vector3.zero, 0.3f).OnComplete(() => matchingManager.OnMatch());
                     matchingManager.state = MatchingState.Full;
@@ -181,8 +195,10 @@ public class MatchingObject : MonoBehaviour
                 }
                 else
                 {
+                    isBeingExpelled = true;
                     AudioManager.instance.PlaySFX("Error", 0.7f);
-                    matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo);
+                    matchingManager.leftObject.transform.DOScale(matchingManager.leftObject.transform.localScale - Vector3.one * 1.2f, 0.12f).SetLoops(2, LoopType.Yoyo)
+                        .OnComplete(() => isBeingExpelled = false);
                     rb.isKinematic = false;
                     rb.velocity = Vector3.zero;
                     triggerExpel = true;

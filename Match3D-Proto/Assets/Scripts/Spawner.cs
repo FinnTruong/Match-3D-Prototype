@@ -19,7 +19,6 @@ public class Spawner : MonoBehaviour
     [Header("Matching Object Attributes")]
     public float moveSpeed = 200f;
     public float throwForce = 1.5f;
-    public float maxThrowDirLength = 2f;
     public float rotateForce = 1f;
     public float expelForce = 50f;
     public float height = 1f;
@@ -87,8 +86,8 @@ public class Spawner : MonoBehaviour
 
                 var matchingObject_01 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
                 var matchingObject_02 = Instantiate(objectPrefabs[randomIndex], GetRandomPos(), Random.rotation, objectHolder);
-                matchingObject_01.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height, outlineColor, outlineWidth);
-                matchingObject_02.SetData(moveSpeed, maxThrowDirLength,throwForce, rotateForce, expelForce, height,outlineColor, outlineWidth);
+                matchingObject_01.SetData(moveSpeed, throwForce, rotateForce, expelForce, height, outlineColor, outlineWidth);
+                matchingObject_02.SetData(moveSpeed, throwForce, rotateForce, expelForce, height,outlineColor, outlineWidth);
                 matchingObject_01.pairedObject = matchingObject_02;
                 matchingObject_02.pairedObject = matchingObject_01;
                 activeObjects.Add(matchingObject_01);

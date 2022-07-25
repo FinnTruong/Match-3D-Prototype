@@ -6,6 +6,7 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] bgTracks;
     public AudioClip[] ambienceTracks;
+    public float transitionInterval = 5f;
 
     private int lastTrackIndex = -1;
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class MusicManager : MonoBehaviour
         clipToPlay = bgTracks[randIndex];
         AudioManager.instance.PlayMusic(clipToPlay, 2f);
         lastTrackIndex = randIndex;
-        Invoke("PlayMusic", clipToPlay.length - 5);
+        Invoke("PlayMusic", clipToPlay.length + transitionInterval);
     }
 
     void PlayAmbience()

@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
             GameObject newMusicSources = new GameObject("Music Sources " + (i + 1));
             musicSources[i] = newMusicSources.AddComponent<AudioSource>();
             musicSources[i].volume = 0.7f;
-            musicSources[i].loop = true;
+            musicSources[i].loop = false;
             newMusicSources.transform.parent = transform;
         }
     }
